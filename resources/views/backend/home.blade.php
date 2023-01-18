@@ -15,12 +15,6 @@
                 <router-view></router-view>
             </div>
         </div>
-        <aside class="control-sidebar control-sidebar-dark">
-            <div class="p-3">
-                <h5>Title</h5>
-                <p>Sidebar content</p>
-            </div>
-        </aside>
         @include('backend.content.footer')
     </div>
     @include('backend.content.script')

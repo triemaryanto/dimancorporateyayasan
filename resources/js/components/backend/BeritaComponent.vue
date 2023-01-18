@@ -301,7 +301,6 @@ export default {
             errors: {},
         };
     },
-    mounted() {},
     methods: {
         loadData(page = 1) {
             this.$Progress.start();

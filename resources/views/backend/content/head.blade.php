@@ -1,3 +1,10 @@
+<!-- =======================================================
+  * Made By : Tri Maryanto
+  * Email : triemaryanto93@gmail.com
+  * IG : triemaryanto
+  * Fb : triemaryanto
+  * Telp / Wa : 085157392291
+  ======================================================== -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 

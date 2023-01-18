@@ -3,6 +3,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AboutController;
 use App\Http\Controllers\API\BeritaController;
 use App\Http\Controllers\API\KategoriController;
 
@@ -26,5 +27,6 @@ Route::get('data-kategori', [KategoriController::class, 'index']);
 Route::apiResources([
     'berita' => BeritaController::class,
 ]);
+Route::apiResources(['about' => AboutController::class,]);
 Route::apiResources(['kategori' => KategoriController::class,]);
 Route::post('beritaubah/{id}', [BeritaController::class, 'ubah'])->name('berita.ubah');

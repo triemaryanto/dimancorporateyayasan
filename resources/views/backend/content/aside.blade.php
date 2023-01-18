@@ -22,10 +22,10 @@
                     <li class="nav-item menu-open ">
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <router-link to="/admin/home" class="nav-link">
                                     <i class="fa-solid fa-house"></i>
                                     <p>Dashboard</p>
-                                </a>
+                                </router-link>
                             </li>
                         </ul>
                     </li>
@@ -36,7 +36,13 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
+                        <router-link to="/admin/about" class="nav-link">
+                            <i class="nav-icon fa-solid fa-database"></i>
+                            <p>About</p>
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <router-link to="/admin/data-berita" class="nav-link">
                             <i class="nav-icon fa-solid fa-database"></i>
                             <p>
