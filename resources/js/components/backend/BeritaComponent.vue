@@ -10,6 +10,7 @@
                                 Tambah Berita
                             </button>
                             <!-- Modal -->
+
                             <div
                                 class="modal fade"
                                 id="modalmuncul"
@@ -167,6 +168,49 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="m-3">
+                            <form @submit.prevent="loadData">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <strong>Search By:</strong>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <select
+                                                class="form-control"
+                                                v-model="searchField"
+                                                required
+                                            >
+                                                <option value>Pilih</option>
+                                                <option value="judul">
+                                                    Judul
+                                                </option>
+                                                <option value="isi_berita">
+                                                    Isi
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Input Here"
+                                            v-model="search"
+                                        />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button
+                                            type="submit"
+                                            class="btn btn-primary form-control"
+                                        >
+                                            <i class="fas fa-search"></i
+                                            ><a>Cari Data</a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="table table-responsive">
@@ -244,7 +288,8 @@ export default {
             statusmodal: false,
             beritas: {},
             kategoris: {},
-
+            search: "",
+            searchField: "",
             form: new Form({
                 id: "",
                 judul: "",
@@ -258,16 +303,14 @@ export default {
     },
     mounted() {},
     methods: {
-        loadData() {
+        loadData(page = 1) {
             this.$Progress.start();
-            // axios.get("api/dataanggota?page=" + page);
             axios
                 .get(
-                    // `api/dataanggota?page=${page}&search=${this.search}&searchField=${this.searchField}`
-                    `../api/berita`
+                    `../api/berita?page=${page}&search=${this.search}&searchField=${this.searchField}`
                 )
                 .then((data) => {
-                    this.beritas = data;
+                    this.beritas = data.data;
                     this.$Progress.finish();
                 })
                 .catch((e) => {

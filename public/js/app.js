@@ -5566,6 +5566,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -5576,6 +5620,8 @@ __webpack_require__.r(__webpack_exports__);
       statusmodal: false,
       beritas: {},
       kategoris: {},
+      search: "",
+      searchField: "",
       form: new vform__WEBPACK_IMPORTED_MODULE_0__["default"]({
         id: "",
         judul: "",
@@ -5591,11 +5637,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     loadData: function loadData() {
       var _this = this;
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.$Progress.start();
-      // axios.get("api/dataanggota?page=" + page);
-      axios.get( // `api/dataanggota?page=${page}&search=${this.search}&searchField=${this.searchField}`
-      "../api/berita").then(function (data) {
-        _this.beritas = data;
+      axios.get("../api/berita?page=".concat(page, "&search=").concat(this.search, "&searchField=").concat(this.searchField)).then(function (data) {
+        _this.beritas = data.data;
         _this.$Progress.finish();
       })["catch"](function (e) {
         console.log(e);
@@ -48995,6 +49040,104 @@ var render = function () {
                 ),
               ]),
               _vm._v(" "),
+              _c("div", { staticClass: "m-3" }, [
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function ($event) {
+                        $event.preventDefault()
+                        return _vm.loadData.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.searchField,
+                                  expression: "searchField",
+                                },
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function ($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function (o) {
+                                      return o.selected
+                                    })
+                                    .map(function (o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.searchField = $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                },
+                              },
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Pilih"),
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "judul" } }, [
+                                _vm._v(
+                                  "\n                                                Judul\n                                            "
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "isi_berita" } }, [
+                                _vm._v(
+                                  "\n                                                Isi\n                                            "
+                                ),
+                              ]),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.search,
+                              expression: "search",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Input Here" },
+                          domProps: { value: _vm.search },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.search = $event.target.value
+                            },
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(1),
+                    ]),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
                 _c("div", { staticClass: "form-group" }, [
                   _c("div", { staticClass: "table table-responsive" }, [
@@ -49005,7 +49148,7 @@ var render = function () {
                         attrs: { id: "example2" },
                       },
                       [
-                        _vm._m(0),
+                        _vm._m(2),
                         _vm._v(" "),
                         _vm._l(_vm.beritas.data, function (item) {
                           return _c("tr", { key: item.id }, [
@@ -49094,6 +49237,32 @@ var render = function () {
   ])
 }
 var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c("strong", [_vm._v("Search By:")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-2" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-primary form-control",
+          attrs: { type: "submit" },
+        },
+        [
+          _c("i", { staticClass: "fas fa-search" }),
+          _c("a", [_vm._v("Cari Data")]),
+        ]
+      ),
+    ])
+  },
   function () {
     var _vm = this
     var _h = _vm.$createElement

@@ -15,19 +15,15 @@ class BeritaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function formSubmit(Request $request)
-    {
-        $imageName = time() . '.' . $request->image->getClientOriginalExtension();
 
-        $request->image->move(public_path('images'), $imageName);
-
-        return response()->json(['success' => 'You have successfully upload image.']);
-    }
 
     public function index()
     {
+        $data = Kategori::query()->join('beritas', 'beritas.kategori_id', '=', 'kategoris.id');
 
-        return Kategori::join('beritas', 'beritas.kategori_id', '=', 'kategoris.id')->get();
+        return $data->when(request('search'), function ($query) {
+            $query->where(request('searchField'), 'like', '%' . request('search') . '%');
+        })->orderBy('kategoris.id', 'Desc')->paginate(5);
     }
 
     /**
