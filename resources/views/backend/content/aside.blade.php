@@ -44,14 +44,6 @@
                             </p>
                         </router-link>
                     </li>
-                    <li class="nav-item menu-open">
-                        <router-link to="/admin/image" class="nav-link">
-                            <i class="nav-icon fa-solid fa-database"></i>
-                            <p>
-                                Image
-                            </p>
-                        </router-link>
-                    </li>
                 </ul>
                 </ul>
             </nav>
